@@ -1,4 +1,4 @@
-//type Location = (Int, Int)
+package life
 
 sealed trait Status
 case object Alive extends Status

@@ -1,5 +1,8 @@
+package life
+
 import org.scalatest.{FlatSpec, Matchers}
 import BoardData._
+
 class BoardSpec extends FlatSpec with Matchers {
   val board = new Board(block)
 

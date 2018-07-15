@@ -1,3 +1,5 @@
+package life
+
 import org.scalatest.{FlatSpec, Matchers}
 
 class CellSpec extends FlatSpec with Matchers {

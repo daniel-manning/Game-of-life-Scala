@@ -1,3 +1,5 @@
+package life
+
 class Board(boardState:List[Cell]) {
 
   val neighbourCells = List((-1,-1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1),(0, 1), (1, 1) )
@@ -7,7 +9,7 @@ class Board(boardState:List[Cell]) {
     boardState.find(_.location == location).getOrElse(Cell(location, Dead))
   }
 
-def neighbourhood(location: (Int, Int)): List[Cell] = {
+def neighbourhood(location: (Int, Int)): Neighbourhood = {
 
   neighbourCells.map(neighbourhoodVector => lookup((neighbourhoodVector._1 + location._1, neighbourhoodVector._2 + location._2)))
 

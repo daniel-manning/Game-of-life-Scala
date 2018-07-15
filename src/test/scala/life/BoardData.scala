@@ -1,3 +1,5 @@
+package life
+
 object BoardData {
 
   def block = List( Cell((0,0), Dead), Cell((1,0), Dead), Cell((2,0), Dead), Cell((3,0), Dead),
