@@ -4,7 +4,7 @@ import org.scalatest.{FlatSpec, Matchers}
 import BoardData._
 
 class BoardSpec extends FlatSpec with Matchers {
-  val board = new Board(block)
+  val board = Board(block)
 
   "board" should "when given a location look up it's cell" in {
     val cell = board.lookup((1,1))
@@ -28,5 +28,21 @@ class BoardSpec extends FlatSpec with Matchers {
       Cell((0,2), Dead), Cell((1,2), Alive), Cell((2,2), Alive))
   }
 
+  it should "evolve a board correctly to its next state for a block" in {
+    val nextBoardState:Board = board.evolveBoard()
+    nextBoardState shouldBe board
+  }
+
+  it should "evolve a board correctly to its next state for a beehive" in {
+    val beehiveBoard = Board(beehive)
+    val nextBoardState:Board = beehiveBoard.evolveBoard()
+    nextBoardState shouldBe beehiveBoard
+  }
+
+  it should "evolve a board correctly to its next state for a blinker" in {
+    val beehiveBoard = Board(blinker_stage1)
+    val nextBoardState:Board = beehiveBoard.evolveBoard()
+    nextBoardState shouldBe Board(blinker_stage2)
+  }
 
 }
