@@ -1,4 +1,6 @@
-package life
+package life.fixtures
+
+import life.{Alive, Cell, Dead}
 
 object BoardData {
 

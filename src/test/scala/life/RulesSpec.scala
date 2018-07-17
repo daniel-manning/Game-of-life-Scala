@@ -1,7 +1,7 @@
 package life
 
-import NeighbourhoodData._
-import BoardData._
+import life.fixtures.NeighbourhoodData._
+import life.fixtures.BoardData._
 import org.scalatest.{FlatSpec, Matchers}
 
 
