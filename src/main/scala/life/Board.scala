@@ -21,8 +21,11 @@ case class Board(boardState:Map[Location, Status]) {
 
   def evolveBoard(): Board = {
     //TODO: Need to create a thin layer of dead cells around all the alive ones before we evolve state
+    val whitespaceToAdd:List[Cell] = boardState.flatMap(x => neighbourhood(x._1).filter(n => !boardState.contains(n.location))).toList
+    val boardWithWhiteSpace = whitespaceToAdd.foldRight(boardState)((cell, map) => map + ((cell.location, Dead)))
+
     //TODO: Only store alive cells in the map
-    val newBoard = boardState.foldRight(Map[Location, Status]())((x:(Location, Status), y:Map[Location, Status]) => {
+    val newBoard = boardWithWhiteSpace.foldRight(Map[Location, Status]())((x:(Location, Status), y:Map[Location, Status]) => {
       val cell = Cell(x._1, x._2)
       evolveState(cell, neighbourhood = neighbourhood(cell.location)).status match {
         case Alive => y + ((x._1, Alive))

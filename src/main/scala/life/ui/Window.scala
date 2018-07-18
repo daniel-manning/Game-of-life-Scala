@@ -11,11 +11,11 @@ import scala.concurrent.duration._
 import monix.reactive._
 
 object Window extends SimpleSwingApplication {
-  var board =  FileLoader.loadBoardFromFile("glider")
+  var board =  FileLoader.loadBoardFromFile("wobble-gun")
 
   lazy val ui: Panel = new Panel {
     background = Color.white
-    preferredSize = (400, 400)
+    preferredSize = (700, 700)
 
     focusable = true
 
@@ -48,7 +48,7 @@ object Window extends SimpleSwingApplication {
 
   ///////////////MONIX TASKS
   val tick = {
-    Observable.interval(1.second)
+    Observable.interval(100.milliseconds)
       .map(x => {board = board.evolveBoard(); ui.repaint(); x})
   }
 
