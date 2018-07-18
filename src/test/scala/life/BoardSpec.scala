@@ -95,4 +95,13 @@ class BoardSpec extends FlatSpec with Matchers {
     s15 shouldBe pentadecathlonBoard
   }
 
+  it should "allow a glider to travel forever" in  {
+    val gliderBoard = FileLoader.loadBoardFromFile("glider")
+    var board:Board = gliderBoard
+    (1 to 100).toList.foreach(x => {board = board.evolveBoard()})
+    board.boardState.count(_._2 == Alive) shouldBe 5
+    board.boardState.head._1._1 should be > 5
+    board.boardState.head._1._2 should be > 5
+  }
+
 }

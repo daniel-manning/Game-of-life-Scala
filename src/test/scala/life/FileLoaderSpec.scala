@@ -6,7 +6,11 @@ class FileLoaderSpec extends FlatSpec with Matchers {
 
   "File Loader" should "recreate board from file representation" in {
       val fileBoard:Board = FileLoader.loadBoardFromFile("i-column")
-      val expectedBoard = Board(List(
+      val expectedBoard = Board(Map(((5,4),Alive), ((5,5),Alive), ((4,6),Alive), ((6,6),Alive), ((5,7),Alive), ((5,8),Alive),
+        ((5,9),Alive), ((4,10),Alive), ((6,10),Alive), ((5,11),Alive), ((5,12),Alive)))
+
+
+      /*Board(List(
         Cell((0,0),Dead), Cell((1,0),Dead), Cell((2,0),Dead), Cell((3,0),Dead), Cell((4,0),Dead), Cell((5,0),Dead), Cell((6,0),Dead), Cell((7,0),Dead), Cell((8,0),Dead), Cell((9,0),Dead), Cell((10,0),Dead),
         Cell((0,1),Dead), Cell((1,1),Dead), Cell((2,1),Dead), Cell((3,1),Dead), Cell((4,1),Dead), Cell((5,1),Dead), Cell((6,1),Dead), Cell((7,1),Dead), Cell((8,1),Dead), Cell((9,1),Dead), Cell((10,1),Dead),
         Cell((0,2),Dead), Cell((1,2),Dead), Cell((2,2),Dead), Cell((3,2),Dead), Cell((4,2),Dead), Cell((5,2),Dead), Cell((6,2),Dead), Cell((7,2),Dead), Cell((8,2),Dead), Cell((9,2),Dead), Cell((10,2),Dead),
@@ -23,7 +27,7 @@ class FileLoaderSpec extends FlatSpec with Matchers {
         Cell((0,13),Dead), Cell((1,13),Dead), Cell((2,13),Dead), Cell((3,13),Dead), Cell((4,13),Dead), Cell((5,13),Dead), Cell((6,13),Dead), Cell((7,13),Dead), Cell((8,13),Dead), Cell((9,13),Dead), Cell((10,13),Dead),
         Cell((0,14),Dead), Cell((1,14),Dead), Cell((2,14),Dead), Cell((3,14),Dead), Cell((4,14),Dead), Cell((5,14),Dead), Cell((6,14),Dead), Cell((7,14),Dead), Cell((8,14),Dead), Cell((9,14),Dead), Cell((10,14),Dead),
         Cell((0,15),Dead), Cell((1,15),Dead), Cell((2,15),Dead), Cell((3,15),Dead), Cell((4,15),Dead), Cell((5,15),Dead), Cell((6,15),Dead), Cell((7,15),Dead), Cell((8,15),Dead), Cell((9,15),Dead), Cell((10,15),Dead),
-        Cell((0,16),Dead), Cell((1,16),Dead), Cell((2,16),Dead), Cell((3,16),Dead), Cell((4,16),Dead), Cell((5,16),Dead), Cell((6,16),Dead), Cell((7,16),Dead), Cell((8,16),Dead), Cell((9,16),Dead), Cell((10,16),Dead)))
+        Cell((0,16),Dead), Cell((1,16),Dead), Cell((2,16),Dead), Cell((3,16),Dead), Cell((4,16),Dead), Cell((5,16),Dead), Cell((6,16),Dead), Cell((7,16),Dead), Cell((8,16),Dead), Cell((9,16),Dead), Cell((10,16),Dead)))*/
 
     fileBoard shouldBe expectedBoard
   }
