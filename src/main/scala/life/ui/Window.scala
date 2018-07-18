@@ -11,7 +11,7 @@ import scala.concurrent.duration._
 import monix.reactive._
 
 object Window extends SimpleSwingApplication {
-  var board =  FileLoader.loadBoardFromFile("gosper-glider-gun")
+  var board =  FileLoader.loadBoardFromFile("glider")
 
   lazy val ui: Panel = new Panel {
     background = Color.white
@@ -33,7 +33,10 @@ object Window extends SimpleSwingApplication {
       val drawWidth:Int = 9
       val drawHeight:Int = 9
 
-      board.boardState.foreach(x => if(x.status == Alive) g.fillRect(offsetX + x.location._1*width, offsetY + x.location._2*height, drawWidth, drawHeight))
+      board.boardState.foreach(x => {
+        val (location, _) = x
+        g.fillRect(offsetX + location._1 * width, offsetY + location._2 * height, drawWidth, drawHeight)
+      })
 
     }
   }
