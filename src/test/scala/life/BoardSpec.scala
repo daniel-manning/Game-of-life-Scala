@@ -1,7 +1,7 @@
 package life
 
 import org.scalatest.{FlatSpec, Matchers}
-import BoardData._
+import life.fixtures.BoardData._
 
 class BoardSpec extends FlatSpec with Matchers {
   val board = Board(block)
@@ -43,6 +43,56 @@ class BoardSpec extends FlatSpec with Matchers {
     val beehiveBoard = Board(blinker_stage1)
     val nextBoardState:Board = beehiveBoard.evolveBoard()
     nextBoardState shouldBe Board(blinker_stage2)
+  }
+
+  it should "evolve a board correctly to its next state for an eyelet" in {
+    val eyeletBoard = FileLoader.loadBoardFromFile("eyelets")
+    val evolvedBoard = eyeletBoard.evolveBoard()
+    val openoBoard = FileLoader.loadBoardFromFile("openo")
+
+    evolvedBoard shouldBe openoBoard
+  }
+
+  it should "evolve a board correctly to its next state for an openo" in {
+    val eyeletBoard = FileLoader.loadBoardFromFile("openo")
+    val evolvedBoard = eyeletBoard.evolveBoard()
+    val openoBoard = FileLoader.loadBoardFromFile("central-I")
+
+    evolvedBoard shouldBe openoBoard
+  }
+
+  it should "evolve a board correctly to its next state for a Pentadecathlon" in {
+    val pentadecathlonBoard = FileLoader.loadBoardFromFile("central-I")
+    val s1 = pentadecathlonBoard.evolveBoard()
+    val s2 = s1.evolveBoard()
+    val s3 = s2.evolveBoard()
+    val s4 = s3.evolveBoard()
+    val s5 = s4.evolveBoard()
+    val s6 = s5.evolveBoard()
+    val s7 = s6.evolveBoard()
+    val s8 = s7.evolveBoard()
+    val s9 = s8.evolveBoard()
+    val s10 = s9.evolveBoard()
+    val s11 = s10.evolveBoard()
+    val s12 = s11.evolveBoard()
+    val s13 = s12.evolveBoard()
+    val s14 = s13.evolveBoard()
+    val s15 = s14.evolveBoard()
+    s1 should not be pentadecathlonBoard
+    s2 should not be pentadecathlonBoard
+    s3 should not be pentadecathlonBoard
+    s4 should not be pentadecathlonBoard
+    s5 should not be pentadecathlonBoard
+    s6 should not be pentadecathlonBoard
+    s7 should not be pentadecathlonBoard
+    s8 should not be pentadecathlonBoard
+    s9 should not be pentadecathlonBoard
+    s10 should not be pentadecathlonBoard
+    s11 should not be pentadecathlonBoard
+    s12 should not be pentadecathlonBoard
+    s13 should not be pentadecathlonBoard
+    s14 should not be pentadecathlonBoard
+    s15 shouldBe pentadecathlonBoard
   }
 
 }

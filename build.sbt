@@ -7,5 +7,7 @@ lazy val root = (project in file(".")).
       version      := "0.1.0-SNAPSHOT"
     )),
     name := "Game-of-life",
-    libraryDependencies += scalaTest % Test
+    libraryDependencies += scalaTest % Test,
+    libraryDependencies += "org.scala-lang.modules" %% "scala-swing" % "2.0.3",
+    libraryDependencies += "io.monix" %% "monix" % "3.0.0-RC1"
   )
